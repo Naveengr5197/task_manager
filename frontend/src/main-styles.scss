@@ -3,8 +3,8 @@
 // Import Fonts (Lato and Nunito)
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700|Nunito:400,700');
 
-$turquoise: #11e618;
-$green: #38bace;
+$turquoise: #4b8cd7;
+$green: #ce4999;
 $light-green: #45f69e;
 $dark-green: rgb(0, 100, 80);
 
@@ -28,7 +28,7 @@ $input-shadow: none;
 // Set custom global styles (will be applied to whole app)
 
 html {
-    background: linear-gradient(to right top, $turquoise, $green);
+    background: linear-gradient(to right top,#7bc393 , #31b7c2);
 }
 
 html, body {
@@ -47,7 +47,7 @@ html, body {
     min-height: 200px;
     width: 100%;
     max-width: 580px;
-    background: white;
+    background: rgb(255, 255, 255);
     border-radius: 5px;
     padding: 35px;
 }
@@ -61,10 +61,19 @@ html, body {
 
 .white-box {
     padding: 35px;
-    background: white;
+    background: linear-gradient(to right top,#f9ce34,#ee2a7b, #6228d7);
     border-radius: 5px;
 
     width: 350px;
     max-width: 350px;
 
+}
+
+
+button{
+  background-color: rgb(82, 109, 231) !important;
+}
+
+a {
+  color: #3f26df !important;
 }
