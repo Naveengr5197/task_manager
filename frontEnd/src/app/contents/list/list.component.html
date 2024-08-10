@@ -1,0 +1,155 @@
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h1 class="assetDashBoard_h1">Manage DIU PCB Specifications</h1>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 15px; margin-left: 0px">
+  <div class="col-md-12">
+    <button
+      class="btn btn-primary btn_primary_styles"
+      data-toggle="modal"
+      data-target="#AddNewBmsSpec"
+      (click)="resetForm()"
+    >
+      Add new
+    </button>
+  </div>
+</div>
+
+<!-- Add New CellSpec Modal -->
+<div>
+  <div
+    class="modal"
+    id="AddNewBmsSpec"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="AddNewBmsSpecModelTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="AddNewBmsSpecFormModelTitle">
+            Add New DIU PCB Spec
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body modal-body_custom">
+          <form [formGroup]="addListForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label margin_0 login_font required"
+                    >Spec ID</label
+                  >
+                  <input
+                    type="text"
+                    aria-label="UserEnteredSpecId"
+                    class="form-control"
+                    placeholder="Enter User's Spec ID"
+                    [formControl]="addListForm.controls['UserEnteredSpecId']"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-dismiss="modal"
+            [disabled]="addListForm.invalid"
+            (click)="createList(addListForm.value)"
+          >
+            Submit
+          </button>
+          <button
+            type="button"
+            class="btn btn-warning"
+            style="color: white"
+            data-dismiss="modal"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Edit CellSpec Modal -->
+<div
+  class="modal"
+  id="editBmsSpec"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="editCellSpecModelTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="EditBmsSpecFormModelTitle">
+          Edit DIU PCB Spec
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          onclick="$('#editBmsSpec').hide();"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body modal-body_custom">
+        <form [formGroup]="editListForm">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="control-label margin_0 login_font required"
+                  >Spec ID</label
+                >
+                <input
+                  type="text"
+                  aria-label="UserEnteredSpecId"
+                  class="form-control"
+                  placeholder="Enter User's Spec ID"
+                  [formControl]="editListForm.controls['UserEnteredSpecId']"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-dismiss="modal"
+          [disabled]="editListForm.invalid"
+          (click)="updateBmsSpec(editListForm.value)"
+        >
+          Submit
+        </button>
+        <button
+          type="button"
+          class="btn btn-warning"
+          style="color: white"
+          onclick="$('#editBmsSpec').hide();"
+          data-dismiss="modal"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
