@@ -22,10 +22,14 @@ export class NewTaskComponent implements OnInit {
     )
   }
 
-  createTask(title: string) {
-    this.taskService.createTask(title, this.listId).subscribe((newTask: Task) => {
+  createTask(title: string, amount: number) {
+    this.taskService.createTask(title, amount, this.listId).subscribe((newTask: Task) => {
       this.router.navigate(['../'], { relativeTo: this.route });
     })
+  }
+
+  onCancelClicked(){
+    this.router.navigate(['lists/' + this.listId])
   }
 
 }

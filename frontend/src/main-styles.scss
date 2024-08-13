@@ -3,9 +3,9 @@
 // Import Fonts (Lato and Nunito)
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700|Nunito:400,700');
 
-$turquoise: #4b8cd7;
-$green: #ce4999;
-$light-green: #45f69e;
+$turquoise: #4bd8e7;
+$green: #26c195;
+$light-green: #0a2efc;
 $dark-green: rgb(0, 100, 80);
 
 $light: #f8f8f8;
@@ -24,11 +24,12 @@ $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
 
-
 // Set custom global styles (will be applied to whole app)
 
 html {
-    background: linear-gradient(to right top,#7bc393 , #31b7c2);
+  background: linear-gradient(135deg, #3e3d3a, #f9e98d);
+  // background: url("ganesha.jpg") rgba(0, 0, 0, 0),
+  // background: linear-gradient(to left top,magenta , rgb(7, 7, 7)  );
 }
 
 html, body {
@@ -71,9 +72,8 @@ html, body {
 
 
 button{
-  background-color: rgb(82, 109, 231) !important;
 }
 
-a {
-  color: #3f26df !important;
-}
+// a {
+//   color: #3f26df !important;
+// }

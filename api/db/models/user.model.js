@@ -7,14 +7,15 @@ const bcrypt = require('bcryptjs');
 
 // JWT Secret
 const jwtSecret = "51778657246321226641fsdklafjasdkljfsklfjd7148924065";
+// const jwtSecret = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTcyMzEzNzMxNCwiaWF0IjoxNzIzMTM3MzE0fQ.DdCYABOPbiJCS3b5YU8RnCYG7QfMiY86pKne_xXx0WE";
 
 const UserSchema = new mongoose.Schema({
     emails: {
         type: String,
-        required: true,
+        required: false,
         minlength: 1,
         trim: true,
-        unique: true
+        unique: false
     },
     password: {
         type: String,

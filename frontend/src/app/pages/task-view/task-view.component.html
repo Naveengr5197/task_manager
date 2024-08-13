@@ -1,40 +1,42 @@
 <!-- profile details -->
- <div class="profile-container">
-
-<div class="top-bar">
-  <h1 class="title has-text-white" ></h1>
-  <div class="dropdown is-hoverable is-right">
-    <div class="dropdown-trigger">
-      <button
-        class="button"
-        aria-haspopup="true"
-        aria-controls="dropdown-menu4"
-      >
-        <span class="icon is-small">
-          <i class="fa fa-user" aria-hidden="true"></i>
-        </span>
-      </button>
-    </div>
-    <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-      <div class="dropdown-content">
-        <a [routerLink]="['/edit-list', selectedListId]" class="dropdown-item">
-          User
-        </a>
-        <a (click)="onLogoutClick()" class="dropdown-item has-text-danger">
-          Logout
-        </a>
+<div class="profile-container">
+  <div class="top-bar">
+    <h1 class="title has-text-white"></h1>
+    <div class="dropdown is-hoverable is-right">
+      <div class="dropdown-trigger">
+        <button
+          class="button"
+          aria-haspopup="true"
+          aria-controls="dropdown-menu4"
+        >
+          <span class="icon is-small">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+        <div class="dropdown-content">
+          <a
+            [routerLink]="['/edit-list', selectedListId]"
+            class="dropdown-item"
+          >
+            User
+          </a>
+          <a (click)="onLogoutClick()" class="dropdown-item has-text-danger">
+            Logout
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <!--  -->
 
 <div class="centered-content">
   <div class="task-manager-container">
-    <div class="sidebar has-background-white">
-      <h1 class="title has-text-white">Lists</h1>
+    <div class="sidebar">
+      <h1 class="title has-text-primary">Lists</h1>
 
       <div class="list-menu">
         <a
@@ -52,10 +54,10 @@
       </button>
     </div>
 
-    <div class="task-list-container has-background-light">
+    <div class="task-list-container">
       <div *ngIf="tasks">
         <div class="top-bar">
-          <h1 class="title has-text-white">Tasks</h1>
+          <h1 class="title has-text-primary">Tasks</h1>
           <div class="dropdown is-hoverable is-right">
             <div class="dropdown-trigger">
               <button
@@ -91,38 +93,63 @@
         <div
           class="task"
           *ngFor="let task of tasks"
-          (click)="onTaskClick(task)"
           [ngClass]="{ completed: task.completed }"
         >
-          <div class="task-text">
-            <p>{{ task.title }}</p>
-          </div>
-          <div class="task-buttons">
-            <button
-              class="button"
-              [routerLink]="['/lists', selectedListId, 'edit-task', task._id]"
-            >
-              <div class="icon">
-                <i class="fas fa-edit"></i>
-              </div>
-            </button>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  {{ task.title }}
+                </td>
+                <td>
+                  {{ task.amount }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-            <button
-              class="button is-danger"
-              (click)="onDeleteTaskClick(task._id)"
-              style="margin-left: 10px"
-            >
-              <div class="icon">
-                <i class="fas fa-trash"></i>
-              </div>
-            </button>
+          <div class="" style="display: flex; float: left">
+            <div class="task-buttons">
+              <button
+                class="button"
+                [routerLink]="['/lists', selectedListId, 'edit-task', task._id]"
+              >
+                <div class="icon">
+                  <i class="fas fa-edit"></i>
+                </div>
+              </button>
+
+              <button
+                class="button is-danger"
+                (click)="onDeleteTaskClick(task._id)"
+                style="margin-left: 10px"
+              >
+                <div class="icon">
+                  <i class="fas fa-trash"></i>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
-
+        <div *ngIf="viewTotal" class="task">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Total</th>
+                <th>{{ sumOfAmount }}</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
         <h3 class="empty-state-text" *ngIf="tasks.length === 0">
           There are no tasks here! Click the add button to create a new task.
         </h3>
-
         <button
           routerLink="./new-task"
           class="circle-add-button button is-primary"
@@ -134,6 +161,9 @@
       <div *ngIf="!tasks">
         <h3 class="empty-state-text">Please select a list from the sidebar</h3>
       </div>
+      <!--  -->
+
+      <!--  -->
     </div>
   </div>
 </div>

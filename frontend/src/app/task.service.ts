@@ -24,9 +24,9 @@ export class TaskService {
     return this.webReqService.patch(`lists/${id}`, { title });
   }
 
-  updateTask(listId: string, taskId: string, title: string) {
+  updateTask(listId: string, taskId: string, title: string, amount) {
     // We want to send a web request to update a list
-    return this.webReqService.patch(`lists/${listId}/tasks/${taskId}`, { title });
+    return this.webReqService.patch(`lists/${listId}/tasks/${taskId}`, { title, amount });
   }
 
   deleteTask(listId: string, taskId: string) {
@@ -41,9 +41,9 @@ export class TaskService {
     return this.webReqService.get(`lists/${listId}/tasks`);
   }
 
-  createTask(title: string, listId: string) {
+  createTask(title: string, amount : number, listId: string) {
     // We want to send a web request to create a task
-    return this.webReqService.post(`lists/${listId}/tasks`, { title });
+    return this.webReqService.post(`lists/${listId}/tasks`, { title, amount });
   }
 
   complete(task: Task) {
