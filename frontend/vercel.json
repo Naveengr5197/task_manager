@@ -1,9 +1,13 @@
 {
+  "version": 2,
   "builds": [
     {
-      "src": "dist/**",
-
-      "use": "@vercel/static"
+      "src": "angular.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist/task_manager" }
     }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
