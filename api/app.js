@@ -16,7 +16,6 @@ const jwt = require('jsonwebtoken');
 // Load middleware
 app.use(bodyParser.json());
 
-
 // CORS HEADERS MIDDLEWARE
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -115,6 +114,7 @@ let verifySession = (req, res, next) => {
  * Purpose: Get all lists
  */
 app.get('/lists', authenticate, (req, res) => {
+
     // We want to return an array of all the lists that belong to the authenticated user 
     List.find({
         _userId: req.user_id
@@ -212,6 +212,9 @@ app.post('/lists/:listId/tasks', authenticate, (req, res) => {
         if (canCreateTask) {
             let newTask = new Task({
                 title: req.body.title,
+
+                amount: req.body.amount,
+
                 _listId: req.params.listId
             });
             newTask.save().then((newTaskDoc) => {
@@ -338,6 +341,7 @@ app.post('/users/login', (req, res) => {
     let password = req.body.password;
 
     User.findByCredentials(email, password).then((user) => {
+
         return user.createSession().then((refreshToken) => {
             // Session created successfully - refreshToken returned.
             // now we geneate an access auth token for the user
@@ -364,7 +368,6 @@ app.post('/users/login', (req, res) => {
  * Purpose: generates and returns an access token
  */
 app.get('/users/me/access-token', verifySession, (req, res) => {
-    console.log('user snknlk');
     // we know that the user/caller is authenticated and we have the user_id and user object available to us
     req.userObject.generateAccessAuthToken().then((accessToken) => {
         res.header('x-access-token', accessToken).send({ accessToken });
@@ -387,6 +390,7 @@ let deleteTasksFromList = (_listId) => {
 
 
 
-app.listen(8033, () => {
-    console.log("Server is listening on port 8033");
+
+app.listen(3000, () => {
+    console.log("Server is listening on port 3000");
 })
