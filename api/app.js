@@ -16,8 +16,6 @@ const jwt = require('jsonwebtoken');
 // Load middleware
 app.use(bodyParser.json());
 
-
-
 // CORS HEADERS MIDDLEWARE
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -116,7 +114,7 @@ let verifySession = (req, res, next) => {
  * Purpose: Get all lists
  */
 app.get('/lists', authenticate, (req, res) => {
-    console.log('apppp',req, res);
+
     // We want to return an array of all the lists that belong to the authenticated user 
     List.find({
         _userId: req.user_id
@@ -214,7 +212,9 @@ app.post('/lists/:listId/tasks', authenticate, (req, res) => {
         if (canCreateTask) {
             let newTask = new Task({
                 title: req.body.title,
+
                 amount: req.body.amount,
+
                 _listId: req.params.listId
             });
             newTask.save().then((newTaskDoc) => {
@@ -341,7 +341,7 @@ app.post('/users/login', (req, res) => {
     let password = req.body.password;
 
     User.findByCredentials(email, password).then((user) => {
-        console.log('user', user);
+
         return user.createSession().then((refreshToken) => {
             // Session created successfully - refreshToken returned.
             // now we geneate an access auth token for the user
@@ -386,6 +386,7 @@ let deleteTasksFromList = (_listId) => {
         console.log("Tasks from " + _listId + " were deleted!");
     })
 }
+
 
 
 
