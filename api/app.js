@@ -364,6 +364,7 @@ app.post('/users/login', (req, res) => {
  * Purpose: generates and returns an access token
  */
 app.get('/users/me/access-token', verifySession, (req, res) => {
+    console.log('user snknlk');
     // we know that the user/caller is authenticated and we have the user_id and user object available to us
     req.userObject.generateAccessAuthToken().then((accessToken) => {
         res.header('x-access-token', accessToken).send({ accessToken });

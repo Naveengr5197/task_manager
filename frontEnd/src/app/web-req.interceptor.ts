@@ -27,7 +27,6 @@ export class WebReqInterceptor implements HttpInterceptor {
 
         if (error.status === 401) {
           // 401 error so we are unauthorized
-
           // refresh the access token
           return this.refreshAccessToken()
             .pipe(
@@ -41,8 +40,7 @@ export class WebReqInterceptor implements HttpInterceptor {
                 return empty();
               })
             )
-        }
-
+          }
         return throwError(error);
       })
     )

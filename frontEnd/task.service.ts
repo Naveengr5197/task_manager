@@ -11,6 +11,7 @@ export class TaskService {
 
 
   getLists() {
+    console.log('getlist');
     return this.webReqService.get('lists');
   }
 

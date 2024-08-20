@@ -29,7 +29,6 @@ export class WebRequestService {
   }
 
   login(email: string, password: string) {
-    console.log('logingkijbjk');
     return this.http.post(`${this.ROOT_URL}/users/login`, {
       email,
       password

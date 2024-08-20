@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,8 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { ListComponent } from './contents/list/list.component';
-import { AgGridModule } from 'ag-grid-angular';
-
+import { WebReqInterceptor } from './web-req.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,10 +24,11 @@ import { AgGridModule } from 'ag-grid-angular';
     BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
-    AgGridModule.withComponents([]),
   ],
 
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

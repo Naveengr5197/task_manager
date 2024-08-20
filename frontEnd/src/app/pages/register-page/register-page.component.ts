@@ -26,6 +26,7 @@ export class RegisterPageComponent implements OnInit {
   }
 
 
+
   onSignupButtonClicked(value) {
     this.authService.signup(value.email, value.password).subscribe((res: HttpResponse<any>) => {
       this.router.navigate(['/lists']);
