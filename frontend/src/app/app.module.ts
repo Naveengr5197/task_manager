@@ -32,6 +32,7 @@ import { EditTaskComponent } from './pages/edit-task/edit-task.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptor, multi: true }
