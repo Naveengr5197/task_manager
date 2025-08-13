@@ -5,7 +5,8 @@
       "src": "angular.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/frontend"
+        "distDir": "dist/frontend",
+        "nodeVersion": "18.x"
       }
     }
   ],
