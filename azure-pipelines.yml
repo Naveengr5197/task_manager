@@ -16,8 +16,18 @@ steps:
     versionSpec: '14.x'
   displayName: 'Install Node.js'
 
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --prod
-  displayName: 'npm install and build'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'install @angular/cli@14.x.x -g'
+
+- task: CmdLine@1
+  inputs:
+    filename: ng
+    arguments: 'build --prod'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'task-manager'
+    publishLocation: 'pipeline'
