@@ -16,11 +16,11 @@ steps:
     versionSpec: '16.x'
   displayName: 'Install Node.js'
 
-- task: Npm@1
+- task: Npm@0
   inputs:
-    command: 'custom'
-    customCommand: 'install @angular/cli@14.x.x -g'
-
+    command: 'install'
+    arguments: '@angular/cli@14.x.x -g'
+    
 - task: Npm@1
   inputs:
     command: 'custom'
@@ -28,7 +28,7 @@ steps:
 
 - task: CmdLine@1
   inputs:
-    filename: ng
+    filename: '$(Parameters.filename)'
     arguments: 'build --prod'
 
 - task: PublishPipelineArtifact@1
