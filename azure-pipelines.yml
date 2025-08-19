@@ -26,10 +26,11 @@ steps:
     command: 'custom'
     customCommand: 'install --save --legacy-peer-deps'
 
-- task: CmdLine@1
+- task: Npm@1
+  displayName: 'Build Angular'
   inputs:
-    filename: '$(Parameters.filename)'
-    arguments: 'build --prod'
+    command: 'custom'
+    customCommand: 'run build -- --prod'
 
 - task: PublishPipelineArtifact@1
   inputs:
